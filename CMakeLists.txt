@@ -74,6 +74,7 @@ include_directories( "${PROJECT_SOURCE_DIR}/include" )
 add_definitions( -DPACKAGE="RAWTOACES" -DVERSION="${RAWTOACES_VERSION}" )
 add_subdirectory("src/${RAWTOACESIDTLIB}")
 add_subdirectory("src/${RAWTOACESLIB}")
+add_subdirectory("src")
 
 
  
