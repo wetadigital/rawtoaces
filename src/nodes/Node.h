@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "../../include/rawtoaces/metadata.h"
+#include "options.h"
 
 struct ImageInfo
 {
@@ -65,10 +66,18 @@ protected:
 class WriteNode : public Node
 {
 public:
+    WriteNode ( std::shared_ptr<Node> input, Options::CropMode cropMode ):
+        Node(input),
+        _cropMode(cropMode)
+    {}
+    
     using Node::Node;
     
     virtual void validateAll() = 0;
     virtual void writeFile() = 0;
+
+protected:
+    Options::CropMode _cropMode = Options::CropMode::Soft;
 };
 
 class FetchHelper

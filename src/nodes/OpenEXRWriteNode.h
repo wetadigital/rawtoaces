@@ -13,6 +13,7 @@ class OpenEXRWriteNode : public WriteNode
     
 public:
     OpenEXRWriteNode( std::shared_ptr<Node> input, std::string path);
+    OpenEXRWriteNode( std::shared_ptr<Node> input, Options::CropMode cropMode, std::string path);
     ~OpenEXRWriteNode () ;
     
     void validateAll() override;

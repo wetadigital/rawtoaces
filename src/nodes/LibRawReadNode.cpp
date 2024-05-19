@@ -92,6 +92,8 @@ LibrawReadNode::LibrawReadNode( std::string filename, bool demosaic) :
     {
         _impl->imageInfo.left_offset = _impl->libRaw.imgdata.rawdata.sizes.raw_inset_crops[0].cleft;
         _impl->imageInfo.top_offset = _impl->libRaw.imgdata.rawdata.sizes.raw_inset_crops[0].ctop;
+        _impl->imageInfo.image_width = _impl->libRaw.imgdata.rawdata.sizes.raw_inset_crops[0].cwidth;
+        _impl->imageInfo.image_height = _impl->libRaw.imgdata.rawdata.sizes.raw_inset_crops[0].cheight;
     }
     else
     {
@@ -284,7 +286,7 @@ void LibrawReadNode::processLines (size_t startLine, size_t endLine, const float
         for ( size_t line = startLine; line <= endLine; line++ )
         {
             size_t offset = stride * line;
-            uint16_t * p1 = (uint16_t *)_impl->libRaw. imgdata.rawdata.raw_image + offset;
+            uint16_t * p1 = (uint16_t *)_impl->libRaw.imgdata.rawdata.raw_image + offset;
             
             float * p2 = (float *) buffer + _impl->imageInfo.buffer_width * (line - startLine);
             for (size_t x = 0; x < stride; x++)
